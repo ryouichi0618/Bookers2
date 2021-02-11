@@ -10,6 +10,43 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <ul>
+        <li>
+         <!--ログインユーザーの詳細へ飛ぶ(ログインしていない場合はトップページに戻るようにする)-->
+          <%= link_to "Home" %>
+        </li>
+        <li>
+          <!--ユーザー一覧へ-->
+          <%= link_to "Users" %>
+        </li>
+        <li>
+          <!--投稿一覧-->
+          <%= link_to "Books" %>
+        </li>
+        <li>
+          <%= link_to "logout", destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+    <% else %>
+      <ul>
+        <li>
+          <!--ログインユーザーの詳細へ飛ぶ-->
+          <%= link_to "Home" %>
+        </li>
+        <li>
+          <!--Welcome to Bookersへ-->
+          <%= link_to "About" %>
+        </li>
+        <li>
+          <%= link_to "Sing up", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "login", new_user_session_path %>
+        </li>
+      </ul>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
