@@ -1,19 +1,2 @@
 <%= render 'layouts/new_book', book: @book, btn: 'Create Book'%>
 
-<!--投稿一覧-->
-<div class="">
-  <h1>Books</h1>
-  
-  <h4>Title</h4>
-  <h4>Opinion</h4>
-  <% @books.each do |book| %>
-  <div>
-    <!--ユーザー詳細のリンクをつける-->
-    <p>ユーザ画像</p>
-    <!--投稿詳細へのリンクをつける-->
-    <p><%= link_to book.title, book_path(book.id) %></p>
-    <p><%= book.body %></p>
-    
-  </div>
-  <% end %>
-</div>

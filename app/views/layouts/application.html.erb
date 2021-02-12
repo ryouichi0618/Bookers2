@@ -14,12 +14,11 @@
       <ul>
         <li>
          <!--ログインユーザーの詳細へ飛ぶ(ログインしていない場合はトップページに戻るようにする)-->
-          <%= link_to "Home" %>
+          <%= link_to "Home", user_path(current_user.id) %>
         </li>
         <li>
           <!--ユーザー一覧へ-->
           <%= link_to "Users" %>
-        </li>
         <li>
           <!--投稿一覧-->
           <%= link_to "Books", books_path %>
