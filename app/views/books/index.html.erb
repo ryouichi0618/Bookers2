@@ -1,4 +1,4 @@
-<%= render 'layouts/new_book', book: @book %>
+<%= render 'layouts/new_book', book: @book, btn: 'Create Book'%>
 
 <!--投稿一覧-->
 <div class="">
@@ -12,7 +12,7 @@
     <p>ユーザ画像</p>
     <!--投稿詳細へのリンクをつける-->
     <p><%= link_to book.title, book_path(book.id) %></p>
-    <p><%= book.body%></p>
+    <p><%= book.body %></p>
     
   </div>
   <% end %>
