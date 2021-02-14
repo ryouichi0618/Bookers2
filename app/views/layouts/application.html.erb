@@ -18,7 +18,7 @@
         </li>
         <li>
           <!--ユーザー一覧へ-->
-          <%= link_to "Users" %>
+          <%= link_to "Users", users_path %>
         <li>
           <!--投稿一覧-->
           <%= link_to "Books", books_path %>
@@ -47,5 +47,9 @@
     <% end %>
     
     <%= yield %>
+    
+    <footer>
+      <p>CopyRight Infratop.inc</p>
+    </footer>
   </body>
 </html>

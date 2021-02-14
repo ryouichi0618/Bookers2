@@ -1,2 +1,19 @@
-<%= render 'layouts/new_book', book: @book, btn: 'Create Book'%>
-
+ <%= render 'layouts/sidebar', book: @book, user: @user %>
+ 
+<!--投稿一覧-->
+<div>
+  <h1>Books</h1>
+  
+  <h4>Title</h4>
+  <h4>Opinion</h4>
+  <% @books.each do |book| %>
+  <div>
+    <!--ユーザー詳細のリンクをつける-->
+    <p><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size: "90x90" %></p>
+    <!--投稿詳細へのリンクをつける-->
+    <p><%= link_to book.title, book_path(book.id) %></p>
+    <p><%= book.body %></p>
+    
+  </div>
+  <% end %>
+</div>

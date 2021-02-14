@@ -1,3 +1,43 @@
-<%= render 'layouts/new_book', book: @book, btn: 'Creat Book' %>
+ <!--render 'layouts/new_book', book: @book, btn: 'Creat Book'-->
+ <h1>User info</h1>
+<div>
+     
+  <p><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", size: "90x90" %></p>
+  <h4>name---<%= @user.name %></h4>
+  <h4>introduction---<%= @user.introduction %></h4>
+  
+  <%= link_to "|ユーザー情報|", edit_user_path(@user)%>
+  
+</div>
+ 
+ </div>
 
-<%= render 'layouts/lists', books: @books %>
+<h1>New  book</h1>
+<%= form_with model: @book, local: true do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+  <%= f.submit "Create Book" %>
+<% end %>
+
+<div>
+  
+
+<div>
+  <h1>Books</h1>
+  
+  
+  <h4>Title</h4>
+  <h4>Opinion</h4>
+  <% @books.each do |book| %>
+  
+    <!--ユーザー詳細のリンクをつける-->
+    <p>ユーザ画像</p>
+    <!--投稿詳細へのリンクをつける-->
+    <p><%= link_to book.title, book_path(book.id) %></p>
+    <p><%= book.body %></p>
+    
+  
+  <% end %>
+</div>
