@@ -1,0 +1,10 @@
+<% if user.errors.any? %>
+ <div class="error-box">
+    <p class="error-count"><%= user.errors.count%>errors prohibited this obj from being saved:</p>
+      <% user.errors.full_messages.each do |message| %>
+        <ul>
+            <li class="error-text"><%= message %></li>
+        </ul>
+      <% end %>
+  </div>
+<% end %>
