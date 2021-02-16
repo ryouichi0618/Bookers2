@@ -1,23 +1,28 @@
   <%= render 'layouts/sidebar', book: @book, user: @user %>
-  
 
 
-
-
-<div>
-  <h1>Users</h1>
-  
-  <h4>image</h4>
-  <h4>name</h4>
-  <% @users.each do |user| %>
-  <div>
-   <%= link_to user_path(user) do %>
-    <p><%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "90x90" %></p>
-   <% end %>  
-    <p><%= user.name %></p>
-    <p><%= link_to "show", user_path(user) %></p>
-    
-    
-  </div>
-  <% end %>
+<div class="col-8 offset-1">
+  <h2>Users</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">image</th>
+        <th scope="col">name</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to user_path(user) do %>
+            <%= attachment_image_tag user, :profile_image, size: "40x40", fallback: "no_image.jpg", size: "40x40" %>
+          <% end %>
+        </td>
+        <td><%= user.name %></td>
+        <td><%= link_to "show", user_path(user) %></td>
+      </tr>
+    </tboly>
+    <% end %>
+  </table>
 </div>

@@ -1,7 +1,7 @@
 <div class="col-3">
-  <h1 class="mb-2">User info</h1>
+  <h2 class="mb-2">User info</h2>
 
-    <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", size: "90x90" %>
+    <%= attachment_image_tag user, :profile_image, size: "90x90", format: 'jpeg', fallback: "no_image.jpg", size: "90x90" %>
     <table class="table">
       <thead>
         <tr>
@@ -16,16 +16,17 @@
         </tr>
       </tbody>
     </table>
-    <div class="row">
-        <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/:id/edit"></a>
-    </div>
+    <%= link_to edit_user_path(@user),class: "row" do %>
+      <i class="btn btn-outline-secondary btn-block fas fa-user-cog"></i>
+    <% end %>
+
     
   
 
 
 
   <!--新規投稿機能-->
-  <h1>New  book</h1>
+  <h2>New  book</h2>
   <%= form_with model: book, local: true do |f| %>
     <p>
       <label for="inputTitle">Title</label><br>
@@ -35,8 +36,6 @@
       <label for="inputBody">Opinion</label><br>
       <%= f.text_area :body, autofocus: true, id:"inputBody", size: "30x3" %>
     </p>
-    <button type="button" class="btn btn-success">
-      <%= f.submit "Create Book" %>
-    </button>
+      <%= f.submit "Create Book",class: "btn btn-success" %>
   <% end %>
 </div>

@@ -19,7 +19,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book)
     else
       @user = current_user
-      @book = Book.new(book_params)
+      # @book = Book.new(book_params)
       @books = Book.all
       render action: :index
     end

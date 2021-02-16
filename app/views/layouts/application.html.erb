@@ -16,7 +16,7 @@
           <% if user_signed_in? %>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link text-light fas fa-home" href="/users/<% @user %>"> Home</a>
+                <%= link_to " Home", user_path(current_user.id),class: "nav-link text-light fas fa-home" %>
               </li>
               <li class="nav-item">
                 <a href="/users" class="nav-link text-light fas fa-users"> Users</a>
@@ -53,7 +53,9 @@
         <p style="color: green;"><%= flash[:notice] %></p>
       <% end %>
       <div class="container">
+        <%= render 'layouts/error_form', user: @book %>
         <div class="row">
+          
           <%= yield %>
         </div>
       </div>

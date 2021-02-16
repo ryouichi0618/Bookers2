@@ -1,17 +1,25 @@
-
-
  <%= render 'layouts/sidebar', book: @new_book, user: @user %>
-
-<div>
-  <%= link_to user_path(@user) do %>
-    <p><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size: "90x90" %></p>
-  <% end %>  
-    <p><%= @book.user.name %></p>
-    <p><%= link_to @book.title, book_path(@book) %></p>
-    <p><%= @book.body %></p>
-    <% if @book.user == current_user %>
-    <p><%= link_to "edit", edit_book_path(@book) %></p>  
-    
-    <p><%= link_to "destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"} %></p>
-    <% end %>
+<div class="col-8 offset-1">
+  <h2>Book detail</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to user_path(@user) do %>
+            <%= attachment_image_tag @book.user, :profile_image, size: "40x40", fallback: "no_image.jpg", size: "40x40" %><br>    
+            <%= @book.user.name %>
+          <% end %>  
+        </td>
+        
+        <td><%= link_to @book.title, book_path(@book) %></td>
+        <td><%= @book.body %></td>
+        
+        <% if @book.user == current_user %>
+        <td><%= link_to "Edit", edit_book_path(@book),class: "btn btn-success" %></td>  
+        
+        <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"},class: "btn btn-danger" %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
 </div>
