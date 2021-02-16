@@ -28,7 +28,6 @@ class UsersController < ApplicationController
     else
        @user = current_user
        @books = Book.all
-      # @book = Book.new(book_params)
       render template: "books/index"
     end
 

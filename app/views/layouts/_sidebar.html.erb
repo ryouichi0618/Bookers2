@@ -1,31 +1,25 @@
-<div class="col-3">
+<div class="col-md-3">
   <h2 class="mb-2">User info</h2>
 
     <%= attachment_image_tag user, :profile_image, size: "90x90", format: 'jpeg', fallback: "no_image.jpg", size: "90x90" %>
     <table class="table">
       <thead>
         <tr>
-          <th scope="cal">name</th>
-          <th scope="cal"><%= user.name %></th>
+          <th>name</th>
+          <th><%= user.name %></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th scopes="cal">introduction</th>
-          <th scopes="cal"><%= @user.introduction %></th>
+          <td>introduction</td>
+          <td><%= @user.introduction %></td>
         </tr>
       </tbody>
     </table>
     <%= link_to edit_user_path(@user),class: "row" do %>
-      <i class="btn btn-outline-secondary btn-block fas fa-user-cog"></i>
+      <i class=" col-md-12 pull-right btn btn-outline-secondary btn-block fas fa-user-cog"></i>
     <% end %>
 
-    
-  
-
-
-
-  <!--新規投稿機能-->
   <h2>New  book</h2>
   <%= form_with model: book, local: true do |f| %>
     <p>
@@ -36,6 +30,6 @@
       <label for="inputBody">Opinion</label><br>
       <%= f.text_area :body, autofocus: true, id:"inputBody", size: "30x3" %>
     </p>
-      <%= f.submit "Create Book",class: "btn btn-success" %>
+      <%= f.submit "Create Book",class: "col-md-12 pull-right btn btn-success" %>
   <% end %>
 </div>
