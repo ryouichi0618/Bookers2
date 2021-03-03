@@ -49,6 +49,7 @@ class UsersController < ApplicationController
 
   def followed
     @user = User.find(params[:id])
+    @users = @user.followed_user
   end
   private
 
