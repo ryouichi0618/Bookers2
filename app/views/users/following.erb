@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <h3>Follow Users</h3>
+  <!--ここから＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝-->
+  <% if @users.empty? %>
+    <p>ユーザーはいません</p>
+  <% else %>
+    <!--ここまで＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ーーー-->
+    <div class="row">
+      <div class="col-12">
+        <table width="100%">
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>name</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <% @user.following_user.where.not(id: current_user.id).each do |user| %>
+            <tbody>
+              <tr>
+                <td>
+                  <%= link_to follow_path(user) do %>
+                    <%= attachment_image_tag user, :profile_image, size: "90x90", fallback: "no_image.jpg", size: "90x90" %>
+                  <% end %>
+                </td>
+                <td><%= user.name %></td>
+                <td>フォロー数：<%= user.follower.count %></td>
+                <td>フォロワー数：<%= user.followed.count %></td>
+                <td><%= link_to "Show", user_path(user) %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -14,11 +14,33 @@
           <td>introduction</td>
           <td><%= @user.introduction %></td>
         </tr>
+        <tr>
+          <td>follows</td>
+          <td>
+            <%= link_to @user.follower.count, following_user_path(@user) %>
+          </td>
+        </tr>
+        <tr>
+          <td>followers</td>
+          <td>
+            <%= link_to @user.followed.count, followed_user_path(@user) %>
+          </td>
+        </tr>
       </tbody>
     </table>
-    <%= link_to edit_user_path(@user),class: "row" do %>
-      <i class=" col-md-12 pull-right btn btn-outline-secondary btn-block fas fa-user-cog"></i>
-    <% end %>
+
+      <% unless @user == current_user %>
+        <% if current_user.following?(@user) %>
+          <%= link_to 'フォロー外す', unfollow_path(@user.id),class: "btn btn-primary btn-sm", method: :POST %>
+        <% else %>
+          <%= link_to 'フォローする',follow_path(@user.id),class: "btn btn-success btn-sm", method: :POST %>
+        <% end %>
+      <% else %>
+        <%= link_to edit_user_path(@user),class: "row" do %>
+          <i class=" col-md-12 pull-right btn btn-outline-secondary btn-block fas fa-user-cog"></i>
+        <% end %>
+      <% end %>
+
 
   <h2>New  book</h2>
   <%= form_with model: book, local: true do |f| %>
@@ -33,3 +55,5 @@
       <%= f.submit "Create Book",class: "col-md-12 pull-right btn btn-success" %>
   <% end %>
 </div>
+
+
