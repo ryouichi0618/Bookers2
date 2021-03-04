@@ -8,10 +8,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy] 
   end
   post 'follow/:id' => 'relationships#follow', as: 'follow' 
-  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' 
   resources :users, only: [:index, :show, :edit, :update] do
-    member do
-      get :following, :followed
-    end
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
   end
 end

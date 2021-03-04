@@ -22,8 +22,8 @@
               <% end %>
             </td>
             <td><%= @user.name %></td>
-            <td>フォロー数：<%= @user.follower.count %></td>
-            <td>フォロワー数：<%= @user.followed.count %></td>
+            <td>フォロー数：<%= @user.relationships.count %></td>
+            <td>フォロワー数：<%= @user.reverse_of_relationships.count %></td>
           </tr>
         <% User.all.where.not(id: current_user.id).each do |user| %>
           <tr>
@@ -33,16 +33,16 @@
               <% end %>
             </td>
             <td><%= user.name %></td>
-            <td>フォロー数：<%= user.follower.count %></td>
-            <td>フォロワー数：<%= user.followed.count %></td>
+            <td>フォロー数：<%= user.relationships.count %></td>
+            <td>フォロワー数：<%= user.reverse_of_relationships.count %></td>
             <td>
-             
+
                 <% if current_user.following?(user) %>
-                  <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+                  <%= link_to 'フォロー外す', user_relationships_path(user), method: :delete %>
                 <% else %>
-                  <%= link_to 'フォローする',follow_path(user.id), method: :POST %>
+                  <%= link_to 'フォローする',user_relationships_path(user), method: :POST %>
                 <% end %>
-            
+
             </td>
             <td><%= link_to "Show", user_path(user) %></td>
           </tr>
