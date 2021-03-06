@@ -51,6 +51,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     @users = @user.folower
   end
+
+  
+
   private
 
   def user_params

@@ -5,12 +5,14 @@ Rails.application.routes.draw do
 
   resources :books, only: [:create, :index, :show, :edit, :update, :destroy] do
     resources :book_comments, only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy] 
+    resource :favorites, only: [:create, :destroy]
   end
-  post 'follow/:id' => 'relationships#follow', as: 'follow' 
+  get '/search', to: 'search#search'
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    # get :search, on: :collection
   end
 end
