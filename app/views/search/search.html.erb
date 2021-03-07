@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <div class="col-xs-12">
     <% if @model == "user" %>
-    <h2>Users search for '<%= @value %>'</h2>
+    <h2>Users search for '<%= @content %>'</h2>
     <table class="table">
         <thead>
             <tr>
@@ -11,7 +11,7 @@
                 <th>Introduction</th>
             </tr>
         </thead>
-    <% @datas.each do |user| %>
+    <% @records.each do |user| %>
         <tbody>
             <tr>
                 <th>
@@ -29,7 +29,7 @@
         </tbody>
     <% end %>
     <% elsif @model == "book" %>
-    <h2>Books search for '<%= @value %>'</h2>
+    <h2>Books search for '<%= @content %>'</h2>
     <table class="table">
         <thead>
             <tr>
@@ -38,7 +38,7 @@
                 <th>Opinion</th>
             </tr>
         </thead>
-        <% @datas.each do |book| %>
+        <% @records.each do |book| %>
         <tbody>
             <tr>
                 <th>
