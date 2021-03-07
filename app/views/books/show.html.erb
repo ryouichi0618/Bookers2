@@ -1,4 +1,4 @@
-<div class="container">  
+<div class="container">
   <div class="row">
     <%= render 'layouts/sidebar', book: @new_book, user: @user %>
     <div class="col-md-8 offset-md-1">
@@ -12,25 +12,25 @@
                 <%= @book.user.name %>
               <% end %>
             </td>
-  
+
             <td><%= link_to @book.title, book_path(@book) %></td>
             <td><%= @book.body %></td>
-            
+
             <td>
-              <%= render 'favorite', book: @book%>
+              <%= render 'favorites/favorite', book: @book%>
             </td>
-            
+
             <td>コメント件数：<%= @book.book_comments.count %></td>
             <% if @book.user == current_user %>
             <td><%= link_to "Edit", edit_book_path(@book),class: "btn btn-success" %></td>
-  
+
             <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"},class: "btn btn-danger" %></td>
-  
+
             <% end %>
           </tr>
         </tbody>
       </table>
-  
+
       <div class="commets">
         <% @book.book_comments.each do |book_comment| %>
           <table>
@@ -49,7 +49,7 @@
           </table>
         <% end %>
         <%= form_with model:[@book,@comment], local: true do |f| %>
-  
+
             <p>
               <%= f.text_area :comment, size: "90x5"%>
             </p>
